@@ -28,6 +28,8 @@ const TABLE_HEAD = [
 ];
 
 const Dashboard = () => {
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser)
   const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   console.log(apiUrl)
   const [id, setId] = useState("");

@@ -12,6 +12,8 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Contact from "./pages/Contact";
 
 function App() {
+  const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser)
   const dispatch = useDispatch();
 
   const { donations, loading, error } = useSelector(state => state.donations);
@@ -19,15 +21,15 @@ function App() {
     dispatch(fetchDonations());
   }, [dispatch]);
 
+
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route element={<ProtectedRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/contact" element={<Contact />} />
-        </Route>
       </Routes>
     </BrowserRouter>
   );
