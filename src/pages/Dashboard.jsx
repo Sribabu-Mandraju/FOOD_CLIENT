@@ -29,6 +29,7 @@ const TABLE_HEAD = [
 
 const Dashboard = () => {
   const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
+  console.log(apiUrl)
   const [id, setId] = useState("");
   const [allDonations, setAllDonations] = useState([]);
   const [filteredDonations, setFilteredDonations] = useState([]); // State to store filtered donations
@@ -38,7 +39,9 @@ const Dashboard = () => {
 
   const fetchAllDonations = async () => {
     try {
-      const response = await fetch(`/api/auth/getdonations`);
+      const response = await fetch(`${apiUrl}/api/auth/getdonations`,{
+        credentials: 'include'
+      });
       const data = await response.json();
       if (!data.success) {
         toast.error(data.message);
@@ -93,11 +96,13 @@ const filteredData = filteredDataByDate.filter(item => {
   const handleDelete = async (id) => {
     alert("Do You want to delete?");
     try {
-      const response = await fetch(`/api/auth/deletedonation/${id}`, {
+      const response = await fetch(`${apiUrl}/api/auth/deletedonation/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include', // Add this line to include credentials
+
       });
 
       if (response.ok) {

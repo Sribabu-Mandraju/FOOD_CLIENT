@@ -45,12 +45,14 @@ export const EditModel = ({ data, button }) => {
     }
 
     try {
-      const response = await fetch(`/api/auth/updatedonation/${id}`, {
+      const response = await fetch(`${apiUrl}/api/auth/updatedonation/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedData),
+        credentials: 'include', // Add this line to include credentials
+
       });
 
       const data = await response.json();

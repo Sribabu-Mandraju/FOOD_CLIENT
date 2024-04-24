@@ -28,7 +28,7 @@ const Signup = () => {
     e.preventDefault();
     console.log("handle submit called");
     // Handle form submission logic here
-    const response = await fetch(`/api/auth/signup`, {
+    const response = await fetch(`${apiUrl}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

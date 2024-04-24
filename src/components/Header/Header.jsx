@@ -31,7 +31,7 @@ export const Header = () => {
   const handleLogOut = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/auth/signout`,
+      const response = await fetch(`${apiUrl}/api/auth/signout`,
       {
         method:"POST"
       }

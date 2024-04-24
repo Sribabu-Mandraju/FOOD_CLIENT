@@ -41,11 +41,12 @@ const Signin = () => {
     try {
       console.log(apiUrl,"error")
       dispatch(signInStart());
-      const response = await fetch(`/api/auth/signin`, {
+      const response = await fetch(`${apiUrl}/api/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify(formData),
       });
       const data = await response.json();

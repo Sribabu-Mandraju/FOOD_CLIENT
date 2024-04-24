@@ -70,7 +70,9 @@ export const ContactTable = () => {
   const [contacts, setContacts] = useState([]);
   const fetchAllContacts = async () => {
     try {
-      const respsone = await fetch(`/api/auth/allContacts`);
+      const respsone = await fetch(`${apiUrl}/api/auth/allContacts`,{
+        credentials: 'include'
+      });
       const data = await respsone.json();
       // console.log(data.data, "data");
       setContacts(data.data);
@@ -85,8 +87,9 @@ export const ContactTable = () => {
   const handleDelete = async (id) => {
     alert("Do You want to delete?");
     try {
-      const response = await fetch(`/api/auth/deleteContact/${id}`, {
+      const response = await fetch(`${apiUrl}/api/auth/deleteContact/${id}`, {
         method: "DELETE",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },
@@ -122,6 +125,7 @@ export const ContactTable = () => {
   
     return email?.includes(searchTerm?.toLowerCase());
   });
+  console.log(filteredData)
 
   return (
    <>

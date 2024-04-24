@@ -15,7 +15,7 @@ export const Model1 = ({children,button,id}) => {
 
   const deleteDonation = async ({id}) => {
     try {
-      const response = await fetch(`/api/auth/deletedonation/${id}`, {
+      const response = await fetch(`${apiUrl}/api/auth/deletedonation/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
